@@ -1,0 +1,45 @@
+<div ng-init="stockHealthThreshold=800;noOfItemsToDisplay=5;">
+    <div>
+        <div class="col-lg-6">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Showing Only {{ noOfItemsToDisplay }} Item(s) <span class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a ng-click="noOfItemsToDisplay=5;">Latest 5 Items</a></li>
+                        <li><a ng-click="noOfItemsToDisplay=10;">Latest 10 Items</a></li>
+                        <li><a ng-click="noOfItemsToDisplay=25;">Latest 25 Items</a></li>
+                        <li><a ng-click="noOfItemsToDisplay=50;">Latest 50 Items</a></li>
+                        <li><a ng-click="noOfItemsToDisplay=null;">All</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a >Table View</a></li>
+                    </ul>
+                </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </div>
+
+    <div>
+        <table class="table table-responsive table-condensed">
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Quote</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="historyItem in historyList | limitTo: noOfItemsToDisplay"
+                ng-class="{highlight: (historyItem.quotation | stockHealthStatus: stockHealthThreshold) === true}">
+                <td> {{ historyItem.time | date: 'hh:mm:ss' }}</td>
+                <td> {{ historyItem.quotation | currency: '₹ '}}</td>
+                <td> {{ historyItem.quotation | stockHealthStatus: stockHealthThreshold | statusSymbol }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div>
+    <span id="basic-addon1">
+        Customer Id:
+    </span>
+
+    <input type="text" class="text-input input-sm"
+           placeholder="Enter Search String Here ..."
+           aria-describedby="basic-addon1"
+           ng-model-options="{debounce: 500}"
+           ng-model="customerId"/>
+
+    <input type="button" class="btn btn-sm btn-primary"
+           ng-click="switchDashboard(customerId)"
+           value="Switch Dashboard" />
+</div>

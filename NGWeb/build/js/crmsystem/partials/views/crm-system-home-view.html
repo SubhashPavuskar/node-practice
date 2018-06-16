@@ -1,0 +1,30 @@
+<br/>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-target="#collapseSearchPanel">
+                    <span style="color: white;">
+                        Customer Search Panel
+                    </span>
+                </a>
+            </div>
+
+            <div class="panel-collapse collapse in" id="collapseSearchPanel">
+                <div class="panel-body">
+                    <div tt-customer-search-panel
+                         search-string="crmSystemHomeViewControllerObject.customerNameSearchString" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3"
+         ng-repeat="customer in crmSystemHomeViewControllerObject.customers | filter: { name: crmSystemHomeViewControllerObject.customerNameSearchString}">
+        <div tt-customer-thumbnail-viewer
+             customer-info="customer"/>
+    </div>
+</div>
