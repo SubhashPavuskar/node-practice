@@ -22,7 +22,6 @@ gulp.task('copy-web-resources', [], function () {
         }));
 });
 
-
 gulp.task('copy-data-resources', [], function () {
     gulp.src(['app/data/*'])
         .pipe(gulp.dest('build/data/'));
