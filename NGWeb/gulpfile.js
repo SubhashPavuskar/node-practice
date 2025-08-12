@@ -14,7 +14,6 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 
-
 gulp.task('copy-web-resources', [], function () {
     gulp.src(['app/*.html'])
         .pipe(gulp.dest('build/'))
